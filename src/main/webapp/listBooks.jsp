@@ -23,8 +23,8 @@
                          </div>
                          <form method="POST" action="BookController?action=addEditDelete">
                               <div name="buttons" class="text-center">
-                              <input type="submit" value="Add/Edit" name="submit" />&nbsp;
-                              <input type="submit" value="Delete" name="submit" />
+                                   <input type="submit" value="Add/Edit" name="submit" />&nbsp;
+                                   <input type="submit" value="Delete" name="submit" />
                               </div>
                               <br><br>
                               <table class="table table-hover" style="width: 100%;" border="1" cellspacing="2" cellpadding="5">
@@ -54,8 +54,8 @@
                               </table>
                               <br>
                               <div name="buttons" class="text-center">
-                              <input type="submit" value="Add/Edit" name="submit" />&nbsp;
-                              <input type="submit" value="Delete" name="submit" />
+                                   <input type="submit" value="Add/Edit" name="submit" />&nbsp;
+                                   <input type="submit" value="Delete" name="submit" />
                               </div>
                          </form>
                          <center>

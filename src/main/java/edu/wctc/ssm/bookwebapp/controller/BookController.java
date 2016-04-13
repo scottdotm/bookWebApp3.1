@@ -29,6 +29,7 @@ public class BookController extends HttpServlet {
     private static final String ADD_EDIT_DELETE_ACTION = "addEditDelete";
     private static final String SUBMIT_ACTION = "submit";
     private static final String ADD_EDIT_ACTION = "Add/Edit";
+    private static final String DELETE_ACTION = "Delete";
     private static final String ACTION_PARAM = "action";
     private static final String SAVE_ACTION = "Save";
     private static final String CANCEL_ACTION = "Cancel";
@@ -137,12 +138,12 @@ public class BookController extends HttpServlet {
 //                            book.setAuthorId(author);
 //                        }
                         
-                        book = bookService.findById(bookId);;
+                        book = bookService.findById(bookId);
                         book.setTitle(title);
                         book.setIsbn(isbn);
                         Author author = null;
                         if(authorId != null) {
-                            author = authService.findById(authorId);;
+                            author = authService.findById(authorId);
                             book.setAuthorId(author);
                         }
                     }

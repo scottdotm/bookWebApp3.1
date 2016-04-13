@@ -23,7 +23,7 @@
                 <div id="cont">
                     <br>
                     <h1 class="text-center">Admin Page</h1>
-                    <h3 class="text-center">JPA Authors/Books</h3>
+                    <h3 class="text-center">Spring Authors/Books</h3>
                     <br>
                     <div class="col-md-4" id="content">
                         <form id="authors" name="authors" method="POST" action="AuthorController?action=list">
