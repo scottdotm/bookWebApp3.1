@@ -2,6 +2,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -22,10 +24,12 @@
                               </div>
                          </div>
                          <form method="POST" action="BookController?action=addEditDelete">
-                              <div name="buttons" class="text-center">
-                                   <input type="submit" value="Add/Edit" name="submit" />&nbsp;
-                                   <input type="submit" value="Delete" name="submit" />
-                              </div>
+                              <sec:authorize access="hasAnyRole('ROLE_MGR')">
+                                   <div name="buttons" class="text-center">
+                                        <input type="submit" value="Add/Edit" name="submit" />&nbsp;
+                                        <input type="submit" value="Delete" name="submit" />
+                                   </div>
+                              </sec:authorize>
                               <br><br>
                               <table class="table table-hover" style="width: 100%;" border="1" cellspacing="2" cellpadding="5">
                                    <tr style="background-color: black;color:white;">
@@ -53,10 +57,12 @@
                                    </c:forEach>
                               </table>
                               <br>
-                              <div name="buttons" class="text-center">
-                                   <input type="submit" value="Add/Edit" name="submit" />&nbsp;
-                                   <input type="submit" value="Delete" name="submit" />
-                              </div>
+                              <sec:authorize access="hasAnyRole('ROLE_MGR')">
+                                   <div name="buttons" class="text-center">
+                                        <input type="submit" value="Add/Edit" name="submit" />&nbsp;
+                                        <input type="submit" value="Delete" name="submit" />
+                                   </div>
+                              </sec:authorize>
                          </form>
                          <center>
                               <form id="back" name="back" method="POST" action="home.jsp" style="padding:10px;">
