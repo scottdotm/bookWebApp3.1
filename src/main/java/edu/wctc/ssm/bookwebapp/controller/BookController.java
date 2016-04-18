@@ -29,10 +29,11 @@ public class BookController extends HttpServlet {
     private static final String ADD_EDIT_DELETE_ACTION = "addEditDelete";
     private static final String SUBMIT_ACTION = "submit";
     private static final String ADD_EDIT_ACTION = "Add/Edit";
-    private static final String DELETE_ACTION = "Delete";
     private static final String ACTION_PARAM = "action";
     private static final String SAVE_ACTION = "Save";
     private static final String CANCEL_ACTION = "Cancel";
+    private static final String DELETE_ACTION = "Delete";
+    private static final String NO_ID = "You selected delete, but did not check an ID.";
 
     // When using Spring you cannot use @Inject because Spring has no
     // control over Servlets. Therefore you must have the Servlet ask
@@ -61,6 +62,7 @@ public class BookController extends HttpServlet {
         Book book = null;
 
         try {
+
             /*
              Determine what action to take based on a passed in QueryString
              Parameter
@@ -74,10 +76,10 @@ public class BookController extends HttpServlet {
 
                 case ADD_EDIT_DELETE_ACTION:
                     String subAction = request.getParameter(SUBMIT_ACTION);
+                    String[] bookIds = request.getParameterValues("bookId");
 
                     if (subAction.equals(ADD_EDIT_ACTION)) {
                         // must be add or edit, go to addEdit page
-                        String[] bookIds = request.getParameterValues("bookId");
                         if (bookIds == null) {
                             // must be an add action, nothing to do but
                             // go to edit page
@@ -95,10 +97,16 @@ public class BookController extends HttpServlet {
 
                         destination = ADD_EDIT_BOOKS_PAGE;
 
-                    } else {
+                    } else if (subAction.equals(DELETE_ACTION)) {
                         // must be DELETE
                         // get array based on records checked
-                        String[] bookIds = request.getParameterValues("bookId");
+                        if (bookIds == null) {
+                             request.setAttribute("errMsg", NO_ID);
+                         this.refreshBookList(request, bookService);
+                         this.refreshAuthorList(request, authService);
+                         destination = LIST_PAGE;
+                         break;
+                        }
                         for (String id : bookIds) {
                             book = bookService.findById(id);
                             bookService.remove(book);
@@ -128,15 +136,6 @@ public class BookController extends HttpServlet {
                         }
 
                     } else {
-                        // it must be an update
-//                        book = new Book(new Integer(bookId));
-//                        book.setTitle(title);
-//                        book.setIsbn(isbn);
-//                        Author author = null;
-//                        if(authorId != null) {
-//                            author = authService.find(new Integer(authorId));
-//                            book.setAuthorId(author);
-//                        }
                         
                         book = bookService.findById(bookId);
                         book.setTitle(title);
@@ -165,6 +164,7 @@ public class BookController extends HttpServlet {
                     request.setAttribute("errMsg", NO_PARAM_ERR_MSG);
                     destination = LIST_PAGE;
                     break;
+                    
             }
 
         } catch (Exception e) {

@@ -4,7 +4,7 @@
 
     <groupId>edu.wctc.ssm</groupId>
     <artifactId>bookWebApp</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>3.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>bookWebApp3.1</name>

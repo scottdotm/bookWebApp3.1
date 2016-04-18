@@ -60,7 +60,6 @@ public class BookService {
      * Spring performs a transaction with readonly=false. This
      * guarantees a rollback if something goes wrong.
      * @param book 
-      * @return  
      */
     @Transactional
     public Book edit(Book book) {

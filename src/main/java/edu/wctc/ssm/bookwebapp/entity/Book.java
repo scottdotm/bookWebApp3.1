@@ -14,6 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.CascadeType;
 
 /**
  *
@@ -42,7 +43,7 @@ public class Book implements Serializable {
      @Column(name = "isbn")
      private String isbn;
      @JoinColumn(name = "author_id", referencedColumnName = "author_id")
-     @ManyToOne
+     @ManyToOne(cascade = CascadeType.MERGE)
      private Author authorId;
 
      public Book() {
