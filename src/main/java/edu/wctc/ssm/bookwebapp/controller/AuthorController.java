@@ -35,6 +35,7 @@ public class AuthorController extends HttpServlet {
     private static final String ACTION_PARAM = "action";
     private static final String SAVE_ACTION = "Save";
     private static final String CANCEL_ACTION = "Cancel";
+    private static final String NO_ID = "You selected delete, but did not check an ID.";
 
     // When using Spring you cannot use @Inject because Spring has no
     // control over Servlets. Therefore you must have the Servlet ask
@@ -107,6 +108,12 @@ public class AuthorController extends HttpServlet {
                         // must be DELETE
                         // get array based on records checked
                         String[] authorIds = request.getParameterValues("authorId");
+                        if (authorIds == null) {
+                             request.setAttribute("errMsg", NO_ID);
+                         this.refreshList(request, authService);
+                         destination = LIST_PAGE;
+                         break;
+                        }
                         for (String id : authorIds) {
                             
                             //// BIG CHANGE DUE TO SPRING JPA DUE TO LAZY LOADING OF BOOKS //////

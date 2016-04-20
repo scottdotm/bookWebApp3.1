@@ -10,7 +10,7 @@
           <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
           <title>Author Table</title>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-          <link href="myCss.css" rel="stylesheet" type="text/css"/>
+          <link href="Resources/css/myCss.css" rel="stylesheet" type="text/css"/>
      </head>
      <body>
           <div class="row">
@@ -26,9 +26,14 @@
                               <hr>
                               <sec:authorize access="hasAnyRole('ROLE_MGR')">
                                    <div name="buttons" class="text-center">
-                                        <input type="submit" value="Add/Edit" name="submit" />&nbsp;
-                                        <input type="submit" value="Delete" name="submit" />
+                                        <div class="col-xs-8 col-sm-6">
+                                             <input class="btn btn-success" type="submit" value="Add/Edit" name="submit" />&nbsp;
+                                        </div>
+                                        <div class="col-xs-8 col-sm-6">
+                                             <input class="btn btn-warning" type="submit" value="Delete" name="submit" />
+                                        </div>
                                    </div>
+                                   <br>
                               </sec:authorize>
                               <br>
                               <table class="table table-hover" width="600" border="1" cellspacing="2" cellpadding="5">
@@ -50,11 +55,21 @@
                               <br>
                               <sec:authorize access="hasAnyRole('ROLE_MGR')">
                                    <div name="buttons" class="text-center">
-                                        <input type="submit" value="Add/Edit" name="submit" />&nbsp;
-                                        <input type="submit" value="Delete" name="submit" />
+                                        <div class="col-xs-8 col-sm-6">
+                                             <input class="btn btn-success" type="submit" value="Add/Edit" name="submit" />&nbsp;
+                                        </div>
+                                        <div class="col-xs-8 col-sm-6">
+                                             <input class="btn btn-warning" type="submit" value="Delete" name="submit" />
+                                        </div>
                                    </div>
+                                   <br>
                               </sec:authorize>
                          </form>
+                         <c:if test="${errMsg != null}">
+                              <br>
+                              <center><p style="font-weight: bold;color: red;width:600px;">Sorry, data could not be retrieved: ${errMsg}</p></center>
+                              </c:if>
+                         <hr>
                          <center>
                               <form id="back" name="back" method="POST" action="home.jsp" style="padding:10px;">
                                    <input class="btn btn-info" type="submit" name="submit" value="Take me Home">
@@ -63,12 +78,7 @@
                     </div>
                </div>
           </div>
-          <p>Click here to go back to Home Page <a href="index.html">Home</a></p>
 
-          <c:if test="${errMsg != null}">
-               <p style="font-weight: bold;color: red;width:500px;">Sorry, data could not be retrieved:<br>
-                    ${errMsg}</p>
-               </c:if>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
      </body>
