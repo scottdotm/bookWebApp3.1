@@ -22,6 +22,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  * @author Scott
  */
 public class AuthorController extends HttpServlet {
+     private static final long serialVersionUID = 1L;
 
     // NO MAGIC NUMBERS!
     private static final String NO_PARAM_ERR_MSG = "No request parameter identified";

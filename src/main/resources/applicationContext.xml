@@ -94,7 +94,8 @@
             login-page="/login.jsp" 
             default-target-url="/home.jsp"
             always-use-default-target="true"
-            authentication-failure-url="/loginerror.jsp"/>
+            authentication-failure-url="/loginerror.jsp"
+            authentication-success-handler-ref="myAuthenticationHandler"/>
             
         <sec:logout logout-url="/j_spring_security_logout" 
                     invalidate-session="true" 
@@ -127,5 +128,6 @@
         
     <!-- (Optional) Automatically receives and logs AuthenticationEvent messages -->
     <bean id="loggerListener" class="org.springframework.security.authentication.event.LoggerListener"/>
+    <bean id="myAuthenticationHandler" class="edu.wctc.ssm.bookwebapp.util.MyAuthenticationHandler" />
     <!-- end Spring Security Config -->
 </beans>

@@ -24,7 +24,7 @@
                 <div id="cont">
                     <br>
                     <h1 class="text-center">Admin Page</h1>
-                    <h3 class="text-center">Spring Authors/Books</h3>
+                    <h3 class="text-center">Spring Authors/Books - With Spring Security</h3>
                     <br>
                     <div class="col-md-4" id="content">
                         <form id="authors" name="authors" method="POST" action="AuthorController?action=list">
@@ -44,44 +44,20 @@
             </div>
         </div>
         <div class="row">
-            <div class ="container">
-                <div id="cont">
-                    <div class="col-md-4" id="content">
-                        <form id="delete" name="delete" method="POST" action="AuthorController">
-                            <h3>Delete Author by ID</h3>
-                            <p>This will return the rest of the records in the database.</p>
-                            <input type="text" name="authorId" placeholder="Record ID to Deleted">
-                            <input class="btn btn-info" type="submit" name="submit" value="Delete">
-                        </form>
-                    </div>
-                    <div class="col-md-4" id="content">
-                        <form id="update" name="update" method="POST" action="AuthorController">
-                            <h3>Update Author by ID</h3>
-                            <p>This will return all records in Database - Including update.</p>
-                            <input type="text" name="authorId" placeholder="Record ID">
-                            <input type="text" name="authorName" placeholder="Name">
-                            <br>
-                            <br>
-                            <input type="date" name="authorDate" placeholder="Date">
-                            <br>
-                            <br>
-                            <input class="btn btn-info" type="submit" name="submit" value="Update">
-                        </form>
-                    </div>
-                    <div class="col-md-3" id="content">
-                        <form id="create" name="create" method="POST" action="AuthorController">
-                            <h3>Create a new Author</h3>
-                            <p>This will return all records in the database, including new record added.</p>
-                            <input type="text" name="authorName" placeholder="Record Name">
-                            <input class="btn btn-info" type="submit" name="submit" value="Create">
-                        </form>
-                    </div>
-                </div>
-            </div>
+             <div class ="container">
+                  <div id="cont">
+                       <div class="col-md-4" id="content">
+                            <sec:authorize access="hasAnyRole('ROLE_MGR','ROLE_USER')">
+                                 Logged in as: <sec:authentication property="principal.username"></sec:authentication> ::
+                                 <a href='<%= this.getServletContext().getContextPath() + "/j_spring_security_logout"%>'>Log Me Out</a>
+                            </sec:authorize>
+                       </div>
+                  </div>
+             </div>
         </div>
         <div class="row">
-            <footer class="footer">
-                <div class="container">
+             <footer class="footer">
+                  <div class="container">
                     Created by Scott Muth
                 </div>
             </footer>

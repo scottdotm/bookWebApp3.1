@@ -24,10 +24,12 @@
                          </div>
                          <form method="POST" action="AuthorController?action=addEditDelete">
                               <hr>
-                              <div name="buttons" class="text-center">
-                                   <input type="submit" value="Add/Edit" name="submit" />&nbsp;
-                                   <input type="submit" value="Delete" name="submit" />
-                              </div>
+                              <sec:authorize access="hasAnyRole('ROLE_MGR')">
+                                   <div name="buttons" class="text-center">
+                                        <input type="submit" value="Add/Edit" name="submit" />&nbsp;
+                                        <input type="submit" value="Delete" name="submit" />
+                                   </div>
+                              </sec:authorize>
                               <br>
                               <table class="table table-hover" width="600" border="1" cellspacing="2" cellpadding="5">
                                    <tr style="background-color: black;color:white;">
@@ -46,10 +48,12 @@
                                    </c:forEach>
                               </table>
                               <br>
-                              <div name="buttons" class="text-center">
-                                   <input type="submit" value="Add/Edit" name="submit" />&nbsp;
-                                   <input type="submit" value="Delete" name="submit" />
-                              </div>
+                              <sec:authorize access="hasAnyRole('ROLE_MGR')">
+                                   <div name="buttons" class="text-center">
+                                        <input type="submit" value="Add/Edit" name="submit" />&nbsp;
+                                        <input type="submit" value="Delete" name="submit" />
+                                   </div>
+                              </sec:authorize>
                          </form>
                          <center>
                               <form id="back" name="back" method="POST" action="home.jsp" style="padding:10px;">

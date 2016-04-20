@@ -64,6 +64,11 @@
                                    </div>
                               </sec:authorize>
                          </form>
+                         <c:if test="${errMsg != null}">
+                              <br>
+                              <center><p style="font-weight: bold;color: red;width:600px;">Sorry, data could not be retrieved: ${errMsg}</p></center>
+                         </c:if>
+                         <hr>
                          <center>
                               <form id="back" name="back" method="POST" action="home.jsp" style="padding:10px;">
                                    <input class="btn btn-info" type="submit" name="submit" value="Take me Home">
@@ -72,9 +77,5 @@
                     </div>
                </div>
         </div>
-        <c:if test="${errMsg != null}">
-            <p style="font-weight: bold;color: red;width:500px;">Sorry, data could not be retrieved:<br>
-                ${errMsg}</p>
-            </c:if>
     </body>
 </html>
